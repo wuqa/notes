@@ -15,7 +15,8 @@ Enable SSH Agent & add the SSH Key to the agent
 $ eval "$(ssh-agent -s)"        
 
 # Add your SSH key to the ssh-agent    
-$ ssh-add ~/.ssh/id_rsa.pub           
+#$ ssh-add ~/.ssh/id_rsa.pub it is wrong
+$ ssh-add ~/.ssh/id_rsa
 
 Testing SSH connection
 
