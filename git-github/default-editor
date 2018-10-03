@@ -1,0 +1,53 @@
+Command Summary resource (Default text editor for Git )
+Section 12, Lecture 59
+Installing and Configuring text editor (Sublime Text) for Git on Windows
+# Specifying -w will cause the subl command to not exit until the file is closed
+$ git config --global core.editor "'c:/program files/sublime text 3/subl.exe' -w"
+
+
+
+Installing and Configuring text editor (Sublime Text) for Git on Linux
+# extract downloaded file - you can use "tar --help"...CONTD
+# to see the meaning of the options "xvzf"
+$ tar vxjf "sublime_text_3_build_3059_x32.tar.bz2"
+  
+# It is common to locate 3rd-party applications in..CONTD
+# the /opt/ directory, so move the extracted files there
+$ sudo mv sublime_text_3 /opt/
+  
+# make a Bash script which will allow us to execute..CONTD
+# Sublime Text 3 with a simple command
+$ cd /opt/sublime_text_3 
+  
+# create file subl ; vim is improved vi
+$ vim subl
+  
+# add these 2 code lines to file subl
+# see below *** for command meaning
+#!/bin/sh
+exec /opt/sublime_text_3/sublime_text "$@"
+  
+# This allows anyone to read or execute the script, but only the owner can write to it.
+$ sudo chmod 755 subl
+  
+# moving to /usr/bin
+# This is the primary directory of executable commands on the system.
+$ sudo mv subl /usr/bin/
+  
+# Specifying -w will cause the subl command to not exit until the file is closed
+$ git config --global core.editor "subl -w"
+  
+# test to see whether sublime text is the default editor now
+$ git config --global --edit
+
+
+Installing and Configuring text editor (Sublime Text) for Git on Mac
+
+# Create the symlink
+$ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+
+# # test to see whether sublime text is the default editor now
+$ git config --global core.editor "subl -n -w"
+
+** CONTD : means "continued"
+
